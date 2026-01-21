@@ -1,4 +1,4 @@
-﻿CREATE TABLE [sec].[Role]
+﻿CREATE TABLE [sec].[Permission]
 (
 	[Id] INT NOT NULL PRIMARY KEY,
 	[Name] NVARCHAR(256) NOT NULL,
