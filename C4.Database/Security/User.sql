@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [sec].[User]
 (
-	[Id] INT NOT NULL PRIMARY KEY,
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[Username] NVARCHAR(256) NOT NULL,
 	[FirstName] NVARCHAR(128) NOT NULL,
 	[LastName] NVARCHAR(128) NOT NULL,
@@ -16,12 +16,4 @@
 	[UpdatedBy] NVARCHAR(256) NULL,
 	[DeletedAt] DATETIME2 NULL,
 	[DeletedBy] NVARCHAR(256) NULL
-)
-
-GO
-
-CREATE UNIQUE NONCLUSTERED INDEX [IX_User_Username] ON [sec].[User]([Username]) WHERE [IsActive] = 1;
-
-CREATE UNIQUE NONCLUSTERED INDEX [IX_User_PhoneNumber] ON [sec].[User]([PhoneNumber]) WHERE [PhoneNumber] IS NOT NULL AND [IsActive] = 1;
-
-CREATE UNIQUE NONCLUSTERED INDEX [IX_User_Email] ON [sec].[User]([Email]) WHERE [Email] IS NOT NULL AND [IsActive] = 1;
+);
