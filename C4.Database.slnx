@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="C4.Database/C4.Database.sqlproj">
+  <Project Path="C4.Database/C4.Database.sqlproj" Id="49720689-eeac-4ff4-857c-c7c138fc0359">
     <Build />
     <Deploy />
   </Project>

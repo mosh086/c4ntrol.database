@@ -61,9 +61,9 @@
   <ItemGroup>
     <Build Include="Security\User.sql" />
     <Build Include="Security\Role.sql" />
-    <Build Include="Security\Permissions.sql" />
+    <Build Include="Security\Permission.sql" />
     <Build Include="Security.sql" />
     <Build Include="Security\UserRoles.sql" />
-    <Build Include="Security\RolePermissions.sql" />
+    <Build Include="Security\RolePermission.sql" />
   </ItemGroup>
 </Project>
