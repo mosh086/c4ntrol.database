@@ -1,0 +1,8 @@
+C:\Source\C4.Database\C4.Database\bin\Debug\C4.Database.dacpac
+C:\Source\C4.Database\C4.Database\obj\Debug\C4.Database.sqlproj.AssemblyReference.cache
+C:\Source\C4.Database\C4.Database\obj\Debug\Model.xml
+C:\Source\C4.Database\C4.Database\obj\Debug\refactor.xml
+C:\Source\C4.Database\C4.Database\obj\Debug\postdeploy.sql
+C:\Source\C4.Database\C4.Database\obj\Debug\predeploy.sql
+C:\Source\C4.Database\C4.Database\obj\Debug\C4.Database.dll
+C:\Source\C4.Database\C4.Database\obj\Debug\C4.Database.pdb

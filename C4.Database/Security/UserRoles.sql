@@ -1,0 +1,4 @@
+﻿CREATE TABLE [sec].[UserRoles]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)
