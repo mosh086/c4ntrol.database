@@ -9,11 +9,13 @@
 	[Salt] NVARCHAR(256) NOT NULL,
 	[PasswordHash] NVARCHAR(512) NOT NULL,
 	[LastLogin] DATETIME2 NULL,
-	[IsActive] BIT NOT NULL DEFAULT(1),
+	[RefreshToken] NVARCHAR(512) NULL,
+	[RefreshTokenExpiryTime] DATETIME2 NULL,
 	[CreatedAt] DATETIME2 NOT NULL DEFAULT(GETUTCDATE()),
 	[CreatedBy] NVARCHAR(256) NOT NULL,
-	[UpdatedAt] DATETIME2 NULL,
-	[UpdatedBy] NVARCHAR(256) NULL,
+	[LastUpdateAt] DATETIME2 NULL,
+	[LastUpdatedBy] NVARCHAR(256) NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT(0),
 	[DeletedAt] DATETIME2 NULL,
 	[DeletedBy] NVARCHAR(256) NULL
 );
