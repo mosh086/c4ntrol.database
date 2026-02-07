@@ -1,9 +1,21 @@
-﻿CREATE TABLE [sec].[UserRoles]
+﻿CREATE TABLE [sec].[UserRole]
 (
-	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[UserId] INT NOT NULL,
-	[RoleId] INT NOT NULL,
-    CONSTRAINT [FK_UserRoles_User] FOREIGN KEY ([UserId]) REFERENCES [sec].[User] ([Id]), 
-    CONSTRAINT [FK_UserRoles_Role] FOREIGN KEY ([RoleId]) REFERENCES [sec].[Role] ([Id]),
-    CONSTRAINT [UQ_UserRoles_User_Role] UNIQUE ([UserId], [RoleId])
+	[UserId]	BIGINT NOT NULL,
+	[RoleID]	BIGINT NOT NULL, 
+    
+	CONSTRAINT [PK_UserRole] 
+		PRIMARY KEY ([UserId], [RoleID]),
+	CONSTRAINT [FK_UserRole_User_UserId] 
+		FOREIGN KEY ([UserId]) 
+		REFERENCES [sec].[User]([Id]) 
+		ON DELETE CASCADE,
+	CONSTRAINT [FK_UserRole_Role_RoleId] 
+		FOREIGN KEY ([RoleId]) 
+		REFERENCES [sec].[Role]([Id]) 
+		ON DELETE CASCADE
 )
+
+GO;
+
+CREATE INDEX [IX_UserRole_RoleId]
+    ON [sec].[UserRole]([RoleId])

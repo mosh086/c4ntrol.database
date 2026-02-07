@@ -1,13 +1,21 @@
 ﻿CREATE TABLE [sec].[Role]
 (
-	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Name] NVARCHAR(256) NOT NULL,
-	[Description] NVARCHAR(512) NULL,
-	[CreatedAt] DATETIME2 NOT NULL DEFAULT(GETUTCDATE()),
-	[CreatedBy] NVARCHAR(256) NOT NULL,
-	[LastUpdateAt] DATETIME2 NULL,
+	[Id]				BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[Name]				NVARCHAR(256) NOT NULL,
+	[NormalizedName]	NVARCHAR(256) NOT NULL,
+	[Description]		NVARCHAR(512) NULL,
+
+	[CreatedAt]		DATETIME2 NOT NULL DEFAULT(GETUTCDATE()),
+	[CreatedBy]		NVARCHAR(256) NOT NULL,
+	[LastUpdateAt]	DATETIME2 NULL,
 	[LastUpdatedBy] NVARCHAR(256) NULL,
-	[IsDeleted] BIT NOT NULL DEFAULT(0),
-	[DeletedAt] DATETIME2 NULL,
-	[DeletedBy] NVARCHAR(256) NULL
+	[IsDeleted]		BIT NOT NULL DEFAULT(0),
+	[DeletedAt]		DATETIME2 NULL,
+	[DeletedBy]		NVARCHAR(256) NULL
 )
+
+GO;
+
+CREATE UNIQUE INDEX [RoleNameIndex]
+    ON [sec].[Role]([NormalizedName])
+    WHERE [NormalizedName] IS NOT NULL
