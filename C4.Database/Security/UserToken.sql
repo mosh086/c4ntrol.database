@@ -3,7 +3,8 @@
 	[UserId]        BIGINT NOT NULL,
     [LoginProvider] NVARCHAR(450) NOT NULL,
     [Name]          NVARCHAR(450) NOT NULL,
-    [Value]         NVARCHAR(MAX) NULL, 
+    [Value]         NVARCHAR(MAX) NULL,
+    [RefreshToken]  NVARCHAR(MAX) NULL
     
     CONSTRAINT [PK_UserToken]
         PRIMARY KEY ([UserId], [LoginProvider], [Name]),

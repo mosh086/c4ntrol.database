@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [sec].[UserRole]
 (
-	[UserId]	BIGINT NOT NULL,
-	[RoleID]	BIGINT NOT NULL, 
+	[UserId]		BIGINT NOT NULL,
+	[RoleId]		BIGINT NOT NULL, 
     
 	CONSTRAINT [PK_UserRole] 
 		PRIMARY KEY ([UserId], [RoleID]),
