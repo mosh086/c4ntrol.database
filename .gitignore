@@ -47,3 +47,4 @@ Generated\ Files/
 # Misc
 *.swp
 *.~*
+/C4.Database/C4.Database.jfm
