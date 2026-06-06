@@ -20,6 +20,6 @@
 
 GO;
 
-CREATE UNIQUE INDEX [RoleNameIndex]
-    ON [sec].[Role]([NormalizedName])
-    WHERE [NormalizedName] IS NOT NULL
+CREATE UNIQUE INDEX [UQ_Role_NormalizedName]
+	ON [sec].[Role]([NormalizedName])
+	WHERE [NormalizedName] IS NOT NULL

@@ -4,7 +4,7 @@
 	[RoleId]		BIGINT NOT NULL, 
     
 	CONSTRAINT [PK_UserRole] 
-		PRIMARY KEY ([UserId], [RoleID]),
+		PRIMARY KEY ([UserId], [RoleId]),
 	CONSTRAINT [FK_UserRole_User_UserId] 
 		FOREIGN KEY ([UserId]) 
 		REFERENCES [sec].[User]([Id]) 
