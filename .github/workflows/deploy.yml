@@ -1,0 +1,26 @@
+name: Deploy Database to Azure SQL
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Install sqlpackage
+      run: dotnet tool install -g microsoft.sqlpackage
+
+    - name: Build DACPAC
+      run: msbuild powdernaut.database/powdernaut.database.sqlproj /p:Configuration=Release
+
+    - name: Publish to Azure SQL
+      run: sqlpackage /Action:Publish /SourceFile:"powdernaut.database\bin\Release\powdernaut.database.dacpac" /TargetConnectionString:"${{ secrets.AZURE_SQL_CONNECTION_STRING }}"
