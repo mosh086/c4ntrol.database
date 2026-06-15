@@ -3,16 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>C4.Database</Name>
+    <Name>powdernaut.database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{49720689-eeac-4ff4-857c-c7c138fc0359}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>C4.Database</RootNamespace>
-    <AssemblyName>C4.Database</AssemblyName>
+    <RootNamespace>powdernaut.database</RootNamespace>
+    <AssemblyName>powdernaut.database</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -55,15 +55,25 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
-    <Folder Include="Properties" />
     <Folder Include="Security" />
+    <Folder Include="Org" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\User.sql" />
     <Build Include="Security\Role.sql" />
-    <Build Include="Security\Permissions.sql" />
-    <Build Include="Security.sql" />
-    <Build Include="Security\UserRoles.sql" />
-    <Build Include="Security\RolePermissions.sql" />
+    <Build Include="Security\UserRole.sql" />
+    <Build Include="security.sql" />
+    <Build Include="Security\UserClaim.sql" />
+    <Build Include="Security\RoleClaim.sql" />
+    <Build Include="Security\UserLogin.sql" />
+    <Build Include="Security\UserToken.sql" />
+    <Build Include="org.sql" />
+    <Build Include="Org\Company.sql" />
+    <Build Include="Org\Supplier.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Scripts\PreDeployment.sql" />
+    <PostDeploy Include="Scripts\PostDeployment.sql" />
   </ItemGroup>
 </Project>

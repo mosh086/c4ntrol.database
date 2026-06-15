@@ -1,4 +1,0 @@
-﻿CREATE TABLE [sec].[Role]
-(
-	[Id] INT NOT NULL PRIMARY KEY
-)
