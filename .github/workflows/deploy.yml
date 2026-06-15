@@ -25,5 +25,34 @@ jobs:
     - name: Build DACPAC
       run: msbuild powdernaut.database/powdernaut.database.sqlproj /p:Configuration=Release
 
+    - name: Get runner IP
+      id: ip
+      run: |
+        $ip = (Invoke-RestMethod -Uri "https://api.ipify.org")
+        echo "RUNNER_IP=$ip" >> $env:GITHUB_ENV
+        echo "ip=$ip" >> $env:GITHUB_OUTPUT
+
+    - name: Log in to Azure
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Add runner IP to Azure SQL firewall
+      run: |
+        az sql server firewall-rule create `
+          --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} `
+          --server ${{ secrets.AZURE_SQL_SERVER }} `
+          --name "GitHubActions-${{ github.run_id }}" `
+          --start-ip-address ${{ env.RUNNER_IP }} `
+          --end-ip-address ${{ env.RUNNER_IP }}
+
     - name: Publish to Azure SQL
       run: sqlpackage /Action:Publish /SourceFile:"powdernaut.database\bin\Release\powdernaut.database.dacpac" /TargetConnectionString:"${{ secrets.AZURE_SQL_CONNECTION_STRING }}"
+
+    - name: Remove runner IP from Azure SQL firewall
+      if: always()
+      run: |
+        az sql server firewall-rule delete `
+          --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} `
+          --server ${{ secrets.AZURE_SQL_SERVER }} `
+          --name "GitHubActions-${{ github.run_id }}"
