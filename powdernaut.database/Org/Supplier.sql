@@ -6,7 +6,6 @@ CREATE TABLE [org].[Supplier]
 	[ContactName]		NVARCHAR(256)			NULL,
 	[Email]				NVARCHAR(256)			NULL,
 	[PhoneNumber]		NVARCHAR(20)			NULL,
-	[TaxId]				NVARCHAR(50)			NULL,
 	[AddressLine1]		NVARCHAR(256)			NULL,
 	[AddressLine2]		NVARCHAR(256)			NULL,
 	[City]				NVARCHAR(128)			NULL,

@@ -3,7 +3,6 @@ CREATE TABLE [org].[Company]
 	[Id]				BIGINT IDENTITY(1,1)	NOT NULL PRIMARY KEY,
 	[Name]				NVARCHAR(256)			NOT NULL,
 	[LegalName]			NVARCHAR(256)			NULL,
-	[TaxId]				NVARCHAR(50)			NULL,
 	[Email]				NVARCHAR(256)			NULL,
 	[PhoneNumber]		NVARCHAR(20)			NULL,
 	[Website]			NVARCHAR(256)			NULL,
@@ -31,9 +30,3 @@ GO;
 
 CREATE INDEX [IX_Company_Name]
 	ON [org].[Company]([Name])
-
-GO;
-
-CREATE INDEX [IX_Company_TaxId]
-	ON [org].[Company]([TaxId])
-	WHERE [TaxId] IS NOT NULL
